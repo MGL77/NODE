@@ -1,22 +1,37 @@
 <template>
   <div id="app">
-    <router-view/>
+    <Header />
+    <router-view />
+    <Loading v-if="isLoading" />
   </div>
 </template>
 
 <script>
+import Header from "@/components/header.vue";
+import { mapGetters } from "vuex";
 export default {
-  name: 'App'
-}
+  components: {
+    Header
+  },
+  computed: mapGetters({
+    isLoading: "getLoading"
+  })
+};
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  font-size: 0.12rem;
+  padding: 0;
+}
+ul li {
+  list-style: none;
+}
+img {
+  display: block;
+}
+body {
+  background-color: #ccc;
+  padding: 0.06rem;
 }
 </style>
